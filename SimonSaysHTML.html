@@ -1,0 +1,38 @@
+<html>
+
+<head>
+</head>
+
+<body ng-app='SimonSays' ng-controller='MainCtrl'>
+  <div class="main">
+    <div id="red" class="quarter quarter1" ng-click="humanMakeMove('red')"></div>
+    <div id="blue" class="quarter quarter2" ng-click="humanMakeMove('blue')"></div>
+    <div id="yellow" class="quarter quarter3" ng-click="humanMakeMove('yellow')"></div>
+    <div id="green" class="quarter quarter4" ng-click="humanMakeMove('green')"></div>
+    <div class="cutout">
+      <h2 class="title" align="center">Simon Says</h2>
+      <ul id="firstList">
+        <li>
+          <p id="counter" class="roundCounter">{{roundCount}}</p>
+        </li>
+        <li>
+          <button id="start" class="liBtn" ng-click="playSequence()">Start</button>
+        </li>
+        <li>
+          <button id="strict" class="liBtn" ng-click="strictButton()">Strict</button>
+        </li>
+      </ul>
+      <ul id="secondList">
+        <li>
+          <button id="on" class="onOff" ng-click="onButton()">On</button>
+        </li>
+        <li>
+          <button id="off" class="onOff" ng-click="offButton()">Off</button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+
+</html>

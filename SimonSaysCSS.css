@@ -1,0 +1,107 @@
+body {
+  background-color: #5D7D7F;
+}
+
+#firstList {
+  text-align: center;
+  display: flex;
+  position: relative;
+  list-style: none;
+  top: 3em;
+}
+
+#secondList {
+  text-align: center;
+  display: flex;
+  position: relative;
+  list-style: none;
+  top: 3em;
+  left: 4em;
+}
+
+li {
+  margin-left: .5em;
+  margin-right: .5em;
+  font-size: 2em;
+}
+
+.onOff {
+  position: relative;
+  font-size: 1em;
+  border-radius: .3em;
+  background: #E2B7E3;
+}
+
+.title {
+  position: relative;
+  top: 1em;
+  font-size: 3em;
+}
+
+.liBtn {
+  margin-top: .9em;
+  font-size: 1em;
+  border-radius: .3em;
+  background: #E2B7E3;
+}
+
+.roundCounter {
+  border-style: solid;
+  color: #BA3434;
+  border-color: black;
+  background: #681A1A;
+  padding-left: .5em;
+  padding-right: .5em;
+  border-radius: .3em;
+}
+
+.main {
+	position: relative;
+	width: 50em;
+	height: 50em;
+	margin: 0 auto;
+}
+
+.quarter {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+  border-style: solid;
+}
+
+.quarter1 {
+	top: 0;
+	left: 0;
+	background-color: red;
+	border-radius: 100% 0 0 0;
+}
+.quarter2 {
+	top: 0;
+	right: 0;
+	background-color: blue;
+	border-radius: 0 100% 0 0 ;
+}
+.quarter3 {
+	bottom: 0;
+	left: 0;
+	background-color: orange;
+	border-radius: 0 0 0 100%;
+}
+.quarter4 {
+	bottom: 0;
+	right: 0;
+	background-color: green;
+	border-radius: 0 0 100% 0 ;
+}
+
+.cutout {
+	width: 50%;
+	height: 50%;
+	background-color: white;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	border-radius: 50%;
+  border-style: solid;
+  background: #C1D8D9;
+	}
