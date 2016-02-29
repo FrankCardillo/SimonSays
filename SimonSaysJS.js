@@ -7,8 +7,9 @@ app.controller('MainCtrl', function($scope) {
   $scope.isOn = false; 
   $scope.reset = true;
   $scope.disableQuarters = false;
-  $scope.moveSet = []; 
-  $scope.playerMove = "#id";
+  $scope.moveSet = [];
+  $scope.curMove = 0;
+  $scope.playerMove = "#id"; 
   $scope.redSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
   $scope.blueSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
   $scope.greenSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
@@ -56,18 +57,18 @@ app.controller('MainCtrl', function($scope) {
     }
   };
   
-  $scope.i = 0;
-  
   $scope.playSequence = function() {
+    // I check to see if $scope.isOn === true so often because the player can turn the game off at any point. I don't want the sequence to continue after the player does that to better simulate a physical machine.
+    
     $scope.disableQuarters = true;
     if ($scope.isOn === true) {
-      if ($scope.isOn === true && $scope.moveSet[$scope.i] === "red") {
+      if ($scope.isOn === true && $scope.moveSet[$scope.curMove] === "red") {
         $scope.redSound.play();
       }
-      else if ($scope.isOn === true && $scope.moveSet[$scope.i] === "blue") {
+      else if ($scope.isOn === true && $scope.moveSet[$scope.curMove] === "blue") {
         $scope.blueSound.play();
       }
-      else if ($scope.isOn === true && $scope.moveSet[$scope.i] === "green") {
+      else if ($scope.isOn === true && $scope.moveSet[$scope.curMove] === "green") {
         $scope.greenSound.play();
       }
       else {
@@ -77,14 +78,16 @@ app.controller('MainCtrl', function($scope) {
       }
 
       if ($scope.isOn === true) {
-        $("#" + $scope.moveSet[$scope.i]).effect("bounce");
+        $("#" + $scope.moveSet[$scope.curMove]).effect("bounce");
       }
       
-      if ($scope.i++ >= $scope.roundCount-1 && $scope.isOn === true) {
-        $scope.i = 0;
+      if ($scope.curMove++ >= $scope.roundCount-1 && $scope.isOn === true) {
+        $scope.curMove = 0;
         $scope.disableQuarters = false;
         return;
       }
+      
+      // incrementally speed up the playing of the sequence as the player reaches higher rounds. They are ordered from highest to lowest round so that the conditions of the lower rounds aren't satisfied first, which would prevent the higher round conditions from coming into effect.
 
       if ($scope.isOn === true && $scope.roundCount-1 >= 12) {
         window.setTimeout($scope.playSequence, 300);
@@ -105,7 +108,8 @@ app.controller('MainCtrl', function($scope) {
     }
   };
   
-  $scope.humanMakeMove = function(id) {  
+  $scope.humanMakeMove = function(id) {
+    // I check to see if $scope.isOn === true so often because the player can turn the game off at any point. I don't want the sequence to continue after the player does that to better simulate a physical machine.
     
     if ($scope.isOn === true && $scope.disableQuarters === false) {
       $scope.playerMove = id;
